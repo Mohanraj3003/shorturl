@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShortUrl</title>
+    <style>
+      th,
+      td {
+        width: 300px;
+        border: 1px solid black;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Create you are short url</h3>
+    <form action="/" method="POST">
+      <label for="full">Full url</label>
+      <input
+        type="text"
+        placeholder="url"
+        class="text"
+        id="full"
+        name="full"
+      /><br /><br />
+      <label for="short">Short url</label>
+      <input
+        type="text"
+        placeholder="url"
+        class="text"
+        id="short"
+        name="short"
+      /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <br /><br />
+    <table style="border: 1px solid black">
+      <thead>
+        <tr>
+          <th>Full url</th>
+          <th>Short url</th>
+          <th>clicks</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% sen.forEach(i => { %>
+        <tr>
+          <td><a href="<%=i.full %>"><%=i.full %></a></td>
+          <td><a href="<%=i.short %>"><%=i.short %></a></td>
+          <td><%=i.clicks %></td>
+          <td>
+            <form action="/submit/<%=i.short %>" method="get">
+              <input type="submit" value="view" />
+            </form>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>
